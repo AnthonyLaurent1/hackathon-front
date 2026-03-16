@@ -1,0 +1,327 @@
+/* ============================================
+   FORM STYLING - Modern & Beautiful
+   ============================================ */
+
+.form-container {
+  max-width: 900px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.form-section {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideUp 0.5s ease-out;
+  animation-delay: var(--delay, 0s);
+}
+
+.form-section:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.form-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--border);
+}
+
+.form-section-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.form-section-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+/* Form rows - flexible layout */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.form-row.full {
+  grid-template-columns: 1fr;
+}
+
+/* Form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: slideUp 0.5s ease-out;
+  animation-delay: var(--delay, 0s);
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.form-group:focus-within label {
+  color: var(--accent);
+}
+
+/* Input styling */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--text);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(47, 111, 137, 0.1);
+  background: #f0f8fc;
+  transform: scale(1.01);
+}
+
+.form-group input:hover:not(:focus),
+.form-group textarea:hover:not(:focus),
+.form-group select:hover:not(:focus) {
+  border-color: #cbd5e0;
+}
+
+/* Material section - special handling */
+.materials-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.material-item {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px;
+  gap: 12px;
+  align-items: flex-end;
+  padding: 12px;
+  background: #f8f9fc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  animation: slideUp 0.4s ease-out;
+}
+
+.material-item:hover {
+  background: #f0f4f8;
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(47, 111, 137, 0.08);
+  transform: translateX(2px);
+}
+
+.material-item .form-group {
+  margin-bottom: 0;
+}
+
+.material-label {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.9rem;
+  padding: 10px 0;
+}
+
+.material-item input {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  animation: slideUp 0.5s ease-out 0.3s both;
+}
+
+.form-actions .btn {
+  min-width: 200px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-actions .btn-secondary {
+  min-width: 120px;
+}
+
+/* Progress indicator (optional) */
+.form-progress {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.progress-step {
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  animation: slideUp 0.5s ease-out;
+}
+
+.progress-step.active,
+.progress-step.completed {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 8px rgba(47, 111, 137, 0.3);
+}
+
+/* Help text */
+.help-text {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 6px;
+  font-style: italic;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.help-text.info {
+  color: var(--accent);
+  font-style: normal;
+}
+
+/* Validation states */
+.form-group.error input,
+.form-group.error textarea,
+.form-group.error select {
+  border-color: var(--danger);
+  background: rgba(214, 69, 69, 0.02);
+}
+
+.form-group.error input:focus,
+.form-group.error textarea:focus,
+.form-group.error select:focus {
+  box-shadow: 0 0 0 4px rgba(214, 69, 69, 0.1);
+}
+
+.form-group.success input,
+.form-group.success textarea,
+.form-group.success select {
+  border-color: var(--success);
+  background: rgba(33, 150, 83, 0.02);
+}
+
+.error-message {
+  font-size: 0.85rem;
+  color: var(--danger);
+  margin-top: 6px;
+  animation: slideDown 0.3s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.error-message::before {
+  content: '⚠️';
+}
+
+/* Number input tweaks */
+input[type="number"] {
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Info banner */
+.form-info {
+  background: linear-gradient(135deg, rgba(47, 111, 137, 0.08) 0%, rgba(242, 143, 67, 0.08) 100%);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--text);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  animation: slideDown 0.5s ease-out;
+}
+
+.form-info::before {
+  content: 'ℹ️';
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Responsive forms */
+@media (max-width: 768px) {
+  .form-grid {
+    gap: 16px;
+  }
+
+  .form-section {
+    padding: 16px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .material-item {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn,
+  .form-actions .btn-secondary {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .form-progress {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -15,39 +15,51 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="page login-page">
-      <div className="card form-card">
-        <h2>Connexion</h2>
-        <p>Utilisez email/password : demo@carbon / hackathon</p>
+    <div className="login-page">
+      <div className="login-container">
+        <div className="login-card">
+          <div className="login-header">
+            <h1>CarbonHack</h1>
+            <p>Calcul d'empreinte carbone - Hackathon 2026</p>
+          </div>
 
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              autoFocus
-            />
-          </label>
+          <form onSubmit={handleSubmit} className="login-form">
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                autoFocus
+                placeholder="demo@carbon"
+              />
+            </div>
 
-          <label>
-            Mot de passe
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </label>
+            <div className="form-group">
+              <label htmlFor="password">Mot de passe</label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="••••••••"
+              />
+            </div>
 
-          <button type="submit" disabled={loading}>
-            {loading ? 'Connexion...' : 'Se connecter'}
-          </button>
+            <button type="submit" disabled={loading} className="login-btn">
+              {loading ? 'Connexion en cours...' : 'Se connecter'}
+            </button>
 
-          {error && <div className="alert-error">{error}</div>}
-        </form>
+            {error && <div className="alert-error">{error}</div>}
+          </form>
+
+          <div className="login-hint">
+            <p><strong>Démo :</strong> demo@carbon / hackathon</p>
+          </div>
+        </div>
       </div>
     </div>
   );

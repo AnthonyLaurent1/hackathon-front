@@ -1,0 +1,505 @@
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUpStaggered {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(47, 111, 137, 0.2); }
+  50% { box-shadow: 0 0 16px rgba(47, 111, 137, 0.4); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinnerPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.8); opacity: 0.5; }
+}
+
+@keyframes dotsBounce {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-6px); }
+}
+
+/* ============================================
+   LAYOUT ANIMATIONS
+   ============================================ */
+
+body {
+  scroll-behavior: smooth;
+}
+
+.app-shell { 
+  animation: fadeIn 0.3s ease-out;
+}
+
+.sidebar { 
+  animation: slideInLeft 0.4s ease-out;
+  position: relative;
+}
+
+.sidebar h1 { 
+  animation: slideDown 0.5s ease-out;
+}
+
+.user-chip { 
+  animation: slideUp 0.5s ease-out 0.1s both;
+}
+
+.content { 
+  animation: slideInRight 0.4s ease-out;
+}
+
+.page h2 { 
+  animation: slideUp 0.5s ease-out;
+}
+
+/* ============================================
+   COMPONENT ANIMATIONS
+   ============================================ */
+
+/* Sidebar items */
+.sidebar a { 
+  animation: slideUp 0.5s ease-out 0.2s both;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.3s ease;
+}
+
+.sidebar a:hover::before {
+  left: 100%;
+}
+
+.sidebar a.active { 
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Buttons */
+.btn, .btn-secondary, button[type='submit'] { 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before, .btn-secondary::before, button[type='submit']::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover, button[type='submit']:hover { 
+  transform: translateY(-2px);
+}
+
+.btn:active::before, button[type='submit']:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* KPI Cards */
+.kpi-card { 
+  animation: slideUp 0.5s ease-out;
+  animation-delay: var(--delay, 0s);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(47, 111, 137, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-4px);
+}
+
+.kpi-card:hover::before {
+  left: 100%;
+}
+
+.kpi-card p { 
+  transition: all 0.3s ease;
+}
+
+.kpi-card:hover p {
+  color: var(--accent);
+}
+
+.kpi-card h3 { 
+  transition: all 0.3s ease;
+}
+
+.kpi-card:hover h3 {
+  font-size: 2rem;
+}
+
+.kpi-sub {
+  transition: all 0.3s ease;
+}
+
+.kpi-card:hover .kpi-sub {
+  color: var(--accent);
+}
+
+/* Cards & Charts */
+.form-card, .card, .chart-card { 
+  animation: slideUp 0.5s ease-out;
+  animation-delay: var(--delay, 0s);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-card:hover, .card:hover, .chart-card:hover { 
+  transform: translateY(-2px);
+}
+
+/* Form inputs */
+.toolbar input, .toolbar select, 
+input, textarea, select { 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toolbar input:focus, .toolbar select:focus,
+input:focus, textarea:focus, select:focus { 
+  transform: scale(1.01);
+}
+
+.form-grid fieldset {
+  animation: slideUp 0.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.form-grid fieldset:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(47, 111, 137, 0.08);
+}
+
+/* Table rows */
+.data-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.data-table tbody tr:hover { 
+  transform: scale(1.01);
+}
+
+.data-table tbody tr:hover td {
+  color: var(--accent);
+}
+
+/* Checkboxes */
+.checkbox-row { 
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  animation: scaleIn 0.4s ease-out;
+}
+
+.checkbox-row:hover { 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(47, 111, 137, 0.12);
+}
+
+/* Link buttons */
+.link-btn { 
+  position: relative;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.link-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.link-btn:hover::after {
+  transform: scaleX(1);
+}
+
+/* Alerts */
+.alert-error { 
+  animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.alert-warning { 
+  animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Loading spinner */
+.loading-spinner { 
+  animation: slideUp 0.5s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.spinner {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: var(--accent2);
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+.spinner-circle:nth-child(2) {
+  width: 70%;
+  height: 70%;
+  animation: spin 1.8s linear infinite reverse;
+  border-top-color: var(--accent2);
+  border-right-color: var(--accent);
+}
+
+.spinner-circle:nth-child(3) {
+  width: 40%;
+  height: 40%;
+  animation: spin 2.4s linear infinite;
+  border-top-color: var(--accent);
+}
+
+.spinner-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.spinner-text p {
+  margin: 0;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.dots {
+  display: flex;
+  gap: 3px;
+}
+
+.dots span {
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: dotsBounce 1.4s ease-in-out infinite;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* ============================================
+   LOGIN PAGE ANIMATIONS
+   ============================================ */
+
+.login-page {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.login-card {
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.login-header h1 {
+  animation: slideDown 0.6s ease-out;
+}
+
+.login-header p {
+  animation: slideUp 0.5s ease-out 0.1s both;
+}
+
+.form-group {
+  animation: slideUp 0.5s ease-out;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.15s; }
+.form-group:nth-child(2) { animation-delay: 0.25s; }
+
+.login-btn {
+  animation: slideUp 0.5s ease-out 0.35s both;
+}
+
+.form-group input {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input:focus {
+  transform: scale(1.02);
+}
+
+/* ============================================
+   PAGE TRANSITION ANIMATIONS
+   ============================================ */
+
+.page > * {
+  animation: slideUpStaggered 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.page h2 { animation-delay: 0.1s; }
+.kpis-grid { animation-delay: 0.15s; }
+.charts-row { animation-delay: 0.2s; }
+.toolbar { animation-delay: 0.1s; }
+
+/* ============================================
+   USER FEEDBACK ANIMATIONS
+   ============================================ */
+
+button:active {
+  transform: scale(0.98);
+}
+
+.btn-ghost { 
+  animation: slideUp 0.5s ease-out 0.35s both;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ghost::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(242, 143, 67, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-ghost:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+.user-chip {
+  transition: all 0.3s ease;
+}
+
+.user-chip:hover {
+  transform: scale(1.03);
+}
+
+/* ============================================
+   RESPONSIVE ANIMATIONS
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  .content {
+    animation: slideUp 0.4s ease-out;
+  }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  body {
+    scroll-behavior: auto;
+  }
+}
